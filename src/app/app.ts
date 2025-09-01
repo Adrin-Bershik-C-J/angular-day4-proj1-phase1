@@ -3,10 +3,10 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrls: ['./app.css'], 
+  styleUrls: ['./app.css'],
 })
 export class App {
   protected readonly title = signal('angular-day3-proj1');

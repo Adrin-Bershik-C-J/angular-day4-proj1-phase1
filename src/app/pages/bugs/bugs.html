@@ -1,0 +1,32 @@
+<div class="top-bar">
+  <h2>Bugs</h2>
+  <button class="logout-btn" (click)="onLogout()">Logout</button>
+</div>
+
+<div class="table-container">
+  <table class="bug-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bug of bugs; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ bug.title }}</td>
+        <td>
+          <span
+            class="status-badge"
+            [ngClass]="bug.status.toLowerCase().replace(' ', '-')"
+          >
+            {{ bug.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p *ngIf="error" class="error">{{ error }}</p>
