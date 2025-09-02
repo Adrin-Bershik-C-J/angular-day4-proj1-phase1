@@ -1,59 +1,123 @@
-# AngularDay3Proj1
+# Angular Bug Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+A modern Angular application for tracking and managing bugs with JWT authentication.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **User Authentication**: Secure login with JWT tokens
+- **Bug Management**: View and track bug status
+- **Responsive Design**: Clean, modern UI with hover effects
+- **Real-time Updates**: Dynamic bug status display with color-coded badges
+- **Route Protection**: Authenticated routes with interceptors
 
+## Tech Stack
+
+- **Frontend**: Angular 18+ (Standalone Components)
+- **Styling**: Custom CSS with modern design patterns
+- **Authentication**: JWT tokens with HTTP interceptors
+- **Routing**: Angular Router with lazy loading
+- **HTTP Client**: Angular HttpClient with RxJS
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── interceptors/        # JWT authentication interceptor
+│   ├── pages/
+│   │   ├── login/          # Login page component
+│   │   └── bugs/           # Bug listing page component
+│   ├── services/           # Authentication and bug services
+│   └── app.routes.ts       # Application routing configuration
+├── index.html
+├── main.ts
+└── styles.css
+```
+
+## Prerequisites
+
+- Node.js (v18 or higher)
+- Angular CLI
+- Backend API running on `http://localhost:8080`
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Adrin-Bershik-C-J/angular-day4-proj1-phase1.git
+cd angular-day4-proj1-phase1
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Open your browser and navigate to `http://localhost:4200`
 
-## Code scaffolding
+## API Endpoints
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The application expects the following backend endpoints:
 
+- `POST /api/auth` - User authentication
+  - Request: `{ username: string, password: string }`
+  - Response: `{ jwt: string }`
+
+- `GET /api/bugs/all` - Fetch all bugs (requires authentication)
+  - Response: `{ content: Bug[] }`
+  - Bug object: `{ id: number, title: string, status: string, assignee: string, project: string }`
+
+## Usage
+
+1. **Login**: Enter your credentials on the login page
+2. **View Bugs**: After successful authentication, you'll be redirected to the bugs page
+3. **Bug Status**: Each bug displays with a color-coded status badge:
+   - 🔴 **Open** - Red badge
+   - 🟠 **In Progress** - Orange badge
+   - 🟢 **Closed** - Green badge
+4. **Logout**: Use the logout button to clear your session
+
+## Key Features
+
+### Authentication Flow
+- JWT tokens are automatically stored and attached to requests
+- Protected routes redirect to login if not authenticated
+- Secure logout clears stored tokens
+
+### Bug Display
+- Responsive table layout
+- Hover effects for better UX
+- Status-based color coding
+- Clean, modern design
+
+## Development
+
+### Building for Production
 ```bash
-ng generate component component-name
+ng build --prod
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+### Running Tests
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+### Code Formatting
+The project uses EditorConfig for consistent code formatting.
 
-For end-to-end (e2e) testing, run:
+## Contributing
 
-```bash
-ng e2e
-```
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -am 'Add new feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Repository**: [angular-day4-proj1-phase1](https://github.com/Adrin-Bershik-C-J/angular-day4-proj1-phase1)
